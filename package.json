@@ -1,0 +1,16 @@
+{
+  "name": "mortgage-repayement-calculator",
+  "version": "1.0.0",
+  "description": "![Design preview for the Mortgage repayment calculator coding challenge](./preview.jpg)",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.17",
+    "tailwindcss": "^4.0.17"
+  }
+}
