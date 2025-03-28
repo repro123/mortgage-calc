@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,16 +18,23 @@
     <link rel="stylesheet" href="./src/output.css" />
     <title>Frontend Mentor | Mortgage repayment calculator</title>
   </head>
-  <body>
-    <main>
-      <section>
-        <div>
-          <h1>Mortgage Calculator</h1>
-          <button id="clearAll">Clear All</button>
+  <body
+    class="flex flex-col min-h-dvh font-jakarta bg-secondary-slate-100 text-secondary-slate-700"
+  >
+    <main class="grid bg-white border grow">
+      <section class="p-6">
+        <div class="flex flex-col items-start gap-2">
+          <h1 class="font-bold text-primary-head">Mortgage Calculator</h1>
+          <button
+            id="clearAll"
+            class="font-medium underline cursor-pointer decoration-dotted hover:text-secondary-slate-900"
+          >
+            Clear All
+          </button>
         </div>
 
-        <form action="">
-          <div>
+        <form action="" class="flex flex-col gap-4 mt-4 border">
+          <div class="flex flex-col gap-2">
             <label for="mortageAmount"
               >Mortgage Amount <span class="sr-only">in Euros</span></label
             >
@@ -40,7 +47,9 @@
                 required
               />
             </div>
-            <p id="amountParagraphError">This field is required</p>
+            <p id="amountParagraphError" aria-live="assertive">
+              This field is required
+            </p>
           </div>
 
           <div>
@@ -80,14 +89,19 @@
           <fieldset>
             <legend>Mortgage Type</legend>
             <div>
-              <input type="radio" name="repayment" id="repayment" />
-              <label for="repayment">Repayment</label>
-            </div>
+              <div>
+                <input type="radio" name="repayment" id="repayment" />
+                <label for="repayment">Repayment</label>
+              </div>
 
-            <div>
-              <input type="radio" name="interestOnly" id="interestOnly" />
-              <label for="interestOnly">Interest Only</label>
+              <div>
+                <input type="radio" name="interestOnly" id="interestOnly" />
+                <label for="interestOnly">Interest Only</label>
+              </div>
             </div>
+            <p class="mortgageTypeError" aria-live="assertive">
+              This field is required
+            </p>
           </fieldset>
 
           <button type="submit" id="calculateRepayments">
@@ -97,7 +111,39 @@
         </form>
       </section>
 
-      <section></section>
+      <section>
+        <div>
+          <div id="emptyResults">
+            <img src="./assets/images/illustration-empty.svg" alt="" />
+            <h2>Results shown here</h2>
+            <p>
+              Results shown here Complete the form and click “calculate
+              repayments” to see what your monthly repayments would be.
+            </p>
+          </div>
+
+          <div id="resultsShown" aria-live="assertive">
+            <h2>Your results</h2>
+            <p>
+              Your results are shown below based on the information you
+              provided. To adjust the results, edit the form and click
+              “calculate repayments” again.
+            </p>
+            <div>
+              <p>
+                <span>Your monthly repayments </span>
+                <span class="sr-only">is</span>
+                <span>&euro;<span id="monthlyRepayments"></span></span>
+              </p>
+              <p>
+                <span>Total you'll repay over the term </span>
+                <span class="sr-only">is</span>
+                <span>&euro;<span id="totalRepayments"></span></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -109,16 +155,3 @@
     </footer>
   </body>
 </html>
-
-Results shown here Complete the form and click “calculate repayments” to see
-what your monthly repayments would be.
-
-<!-- Empty results end -->
-
-<!-- Completed results start -->
-
-Your results Your results are shown below based on the information you provided.
-To adjust the results, edit the form and click “calculate repayments” again.
-Your monthly repayments Total you'll repay over the term
-
-<!-- Completed results end -->
