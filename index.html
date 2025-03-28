@@ -18,13 +18,97 @@
     <link rel="stylesheet" href="./src/output.css" />
     <title>Frontend Mentor | Mortgage repayment calculator</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <section>
+        <div>
+          <h1>Mortgage Calculator</h1>
+          <button id="clearAll">Clear All</button>
+        </div>
+
+        <form action="">
+          <div>
+            <label for="mortageAmount"
+              >Mortgage Amount <span class="sr-only">in Euros</span></label
+            >
+            <div>
+              <span aria-hidden="true" id="eurosSignError">&euro;</span>
+              <input
+                type="number"
+                id="mortageAmount"
+                name="mortageAmount"
+                required
+              />
+            </div>
+            <p id="amountParagraphError">This field is required</p>
+          </div>
+
+          <div>
+            <div>
+              <label for="mortageTerm"
+                >Mortgage Term <span class="sr-only">in years</span></label
+              >
+              <div>
+                <input
+                  type="number"
+                  id="mortageTerm"
+                  name="mortageTerm"
+                  required
+                />
+                <span aria-hidden="true" id="yearsError">years</span>
+              </div>
+              <p id="termParagraphError">This field is required</p>
+            </div>
+
+            <div>
+              <label for="interestRate"
+                >Interest Rate <span class="sr-only">in percentage</span></label
+              >
+              <div>
+                <input
+                  type="number"
+                  id="interestRate"
+                  name="interestRate"
+                  required
+                />
+                <span aria-hidden="true" id="percentageError">%</span>
+              </div>
+              <p id="interestParagraphError">This field is required</p>
+            </div>
+          </div>
+
+          <fieldset>
+            <legend>Mortgage Type</legend>
+            <div>
+              <input type="radio" name="repayment" id="repayment" />
+              <label for="repayment">Repayment</label>
+            </div>
+
+            <div>
+              <input type="radio" name="interestOnly" id="interestOnly" />
+              <label for="interestOnly">Interest Only</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" id="calculateRepayments">
+            <img src="./assets/images/icon-calculator.svg" alt="" />
+            <span> Calculate Repayments </span>
+          </button>
+        </form>
+      </section>
+
+      <section></section>
+    </main>
+
+    <footer>
+      <p class="">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
+        >. Coded by <a href="https://github.com/repro123/">Bello Ibrahim</a>.
+      </p>
+    </footer>
+  </body>
 </html>
-
-Mortgage Calculator Clear All Mortgage Amount Mortgage Term Interest Rate
-Mortgage Type Repayment Interest Only Calculate Repayments
-
-<!-- Empty results start -->
 
 Results shown here Complete the form and click “calculate repayments” to see
 what your monthly repayments would be.
@@ -38,9 +122,3 @@ To adjust the results, edit the form and click “calculate repayments” again.
 Your monthly repayments Total you'll repay over the term
 
 <!-- Completed results end -->
-
-<div class="attribution">
-  Challenge by
-  <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-  Coded by <a href="#">Your Name Here</a>.
-</div>
