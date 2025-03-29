@@ -6,13 +6,28 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(0.637 0.237 25.331);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;
+    --radius-lg: 0.5rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-primary-lime: hsl(61, 70%, 52%);
     --color-secondary-slate-100: hsl(202, 86%, 94%);
+    --color-secondary-slate-300: hsl(203, 41%, 72%);
+    --color-secondary-slate-500: hsl(200, 26%, 54%);
     --color-secondary-slate-700: hsl(200, 24%, 40%);
     --color-secondary-slate-900: hsl(202, 55%, 16%);
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
@@ -176,6 +191,9 @@
   .static {
     position: static;
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -188,11 +206,41 @@
   .grid {
     display: grid;
   }
+  .hidden {
+    display: none;
+  }
   .table {
     display: table;
   }
+  .h-1 {
+    height: calc(var(--spacing) * 1);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-full {
+    height: 100%;
+  }
   .min-h-dvh {
     min-height: 100dvh;
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+  .w-full {
+    width: 100%;
   }
   .flex-grow {
     flex-grow: 1;
@@ -212,36 +260,108 @@
   .flex-col {
     flex-direction: column;
   }
+  .place-items-center {
+    place-items: center;
+  }
+  .items-center {
+    align-items: center;
+  }
   .items-start {
     align-items: flex-start;
+  }
+  .justify-center {
+    justify-content: center;
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
-  .gap-3 {
-    gap: calc(var(--spacing) * 3);
-  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-12 {
+    gap: calc(var(--spacing) * 12);
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
   .scroll-smooth {
     scroll-behavior: smooth;
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-l {
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-0 {
+    border-style: var(--tw-border-style);
+    border-width: 0px;
+  }
+  .border-primary-lime {
+    border-color: var(--color-primary-lime);
+  }
+  .border-red-500 {
+    border-color: var(--color-red-500);
+  }
+  .border-secondary-slate-300 {
+    border-color: var(--color-secondary-slate-300);
+  }
+  .bg-black {
+    background-color: var(--color-black);
+  }
+  .bg-primary-lime {
+    background-color: var(--color-primary-lime);
+  }
   .bg-secondary-slate-100 {
     background-color: var(--color-secondary-slate-100);
+  }
+  .bg-secondary-slate-300 {
+    background-color: var(--color-secondary-slate-300);
   }
   .bg-white {
     background-color: var(--color-white);
   }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
+  }
+  .pl-4 {
+    padding-left: calc(var(--spacing) * 4);
+  }
   .font-jakarta {
     font-family: var(--font-jakarta);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
   }
   .text-primary-head {
     font-size: var(--text-primary-head);
@@ -254,8 +374,15 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
   .text-secondary-slate-700 {
     color: var(--color-secondary-slate-700);
+  }
+  .text-secondary-slate-900 {
+    color: var(--color-secondary-slate-900);
   }
   .underline {
     text-decoration-line: underline;
@@ -267,11 +394,175 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+  .outline-0 {
+    outline-style: var(--tw-outline-style);
+    outline-width: 0px;
+  }
+  .\*\:border {
+    :is(& > *) {
+      border-style: var(--tw-border-style);
+      border-width: 1px;
+    }
+  }
+  .\*\:p-2 {
+    :is(& > *) {
+      padding: calc(var(--spacing) * 2);
+    }
+  }
+  .\*\:p-3 {
+    :is(& > *) {
+      padding: calc(var(--spacing) * 3);
+    }
+  }
+  .\*\:p-4 {
+    :is(& > *) {
+      padding: calc(var(--spacing) * 4);
+    }
+  }
+  .peer-checked\:grid {
+    &:is(:where(.peer):checked ~ *) {
+      display: grid;
+    }
+  }
+  .peer-checked\:border-primary-lime {
+    &:is(:where(.peer):checked ~ *) {
+      border-color: var(--color-primary-lime);
+    }
+  }
+  .peer-checked\:bg-primary-lime {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: var(--color-primary-lime);
+    }
+  }
+  .peer-checked\:bg-primary-lime\/20 {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: color-mix(in oklab, var(--color-primary-lime) 20%, transparent);
+    }
+  }
+  .checked\:sr-only {
+    &:checked {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  }
+  .checked\:border-primary-lime {
+    &:checked {
+      border-color: var(--color-primary-lime);
+    }
+  }
+  .checked\:bg-primary-lime {
+    &:checked {
+      background-color: var(--color-primary-lime);
+    }
+  }
+  .focus-within\:border-secondary-slate-500 {
+    &:focus-within {
+      border-color: var(--color-secondary-slate-500);
+    }
+  }
+  .focus-within\:ring {
+    &:focus-within {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus-within\:ring-secondary-slate-500 {
+    &:focus-within {
+      --tw-ring-color: var(--color-secondary-slate-500);
+    }
+  }
+  .hover\:border-primary-lime {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-primary-lime);
+      }
+    }
+  }
+  .hover\:border-secondary-slate-500 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-secondary-slate-500);
+      }
+    }
+  }
+  .hover\:bg-primary-lime\/80 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in oklab, var(--color-primary-lime) 80%, transparent);
+      }
+    }
+  }
   .hover\:text-secondary-slate-900 {
     &:hover {
       @media (hover: hover) {
         color: var(--color-secondary-slate-900);
       }
+    }
+  }
+  .focus\:border-0 {
+    &:focus {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
+    }
+  }
+  .focus\:bg-primary-lime\/80 {
+    &:focus {
+      background-color: color-mix(in oklab, var(--color-primary-lime) 80%, transparent);
+    }
+  }
+  .focus\:ring {
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus\:ring-primary-lime\/50 {
+    &:focus {
+      --tw-ring-color: color-mix(in oklab, var(--color-primary-lime) 50%, transparent);
+    }
+  }
+  .focus\:outline-0 {
+    &:focus {
+      outline-style: var(--tw-outline-style);
+      outline-width: 0px;
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .has-checked\:border-primary-lime {
+    &:has(*:checked) {
+      border-color: var(--color-primary-lime);
+    }
+  }
+  .has-checked\:bg-primary-lime {
+    &:has(*:checked) {
+      background-color: var(--color-primary-lime);
+    }
+  }
+  .has-checked\:bg-primary-lime\/10 {
+    &:has(*:checked) {
+      background-color: color-mix(in oklab, var(--color-primary-lime) 10%, transparent);
+    }
+  }
+  .has-checked\:bg-primary-lime\/20 {
+    &:has(*:checked) {
+      background-color: color-mix(in oklab, var(--color-primary-lime) 20%, transparent);
+    }
+  }
+  .has-checked\:bg-primary-lime\/90 {
+    &:has(*:checked) {
+      background-color: color-mix(in oklab, var(--color-primary-lime) 90%, transparent);
     }
   }
 }
@@ -288,4 +579,59 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
 }
