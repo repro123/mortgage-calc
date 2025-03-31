@@ -32,3 +32,64 @@ const calculateRepaymentsBtn = document.querySelector("#calculateRepayments");
 // select empty results and result content divs
 const emptyResultsDiv = document.querySelector("#emptyResults");
 const resultsShownDiv = document.querySelector("#resultsShown");
+
+form.addEventListener("submit", function (ev) {
+  ev.preventDefault();
+});
+
+clearAllBtn.addEventListener("click", function () {
+  form.reset();
+});
+
+function validateform() {
+  let isValid = true;
+
+  //   validate mortgage amount input
+  if (!mortageAmountInput.value) {
+    amountParagraphRequiredError.classList.remove("hidden");
+    poundsSignErrorSpan.classList.remove("bg-secondary-slate-100");
+    poundsSignErrorSpan.classList.add("error");
+    isValid = false;
+  } else if (Number(mortageAmountInput.value) <= 0) {
+    amountParagraphRequiredError.classList.remove("hidden");
+    amountParagraphRequiredError.textContent = "Should be above zero";
+    poundsSignErrorSpan.classList.remove("bg-secondary-slate-100");
+    poundsSignErrorSpan.classList.add("error");
+    isValid = false;
+  }
+
+  //    validate mortgage term input
+  if (!mortageTermYearsInput.value) {
+    termParagraphRequiredError.classList.remove("hidden");
+    yearsErrorSpan.classList.remove("bg-secondary-slate-100");
+    yearsErrorSpan.classList.add("error");
+    isValid = false;
+  } else if (Number(mortageTermYearsInput.value) <= 0) {
+    termParagraphRequiredError.classList.remove("hidden");
+    termParagraphRequiredError.textContent = "Should be above zero";
+    yearsErrorSpan.classList.remove("bg-secondary-slate-100");
+    yearsErrorSpan.classList.add("error");
+    isValid = false;
+  }
+
+  //   validate interest rate input
+  if (!interestRateInput.value) {
+    interestParagraphRequiredError.classList.remove("hidden");
+    percentageErrorSpan.classList.remove("bg-secondary-slate-100");
+    percentageErrorSpan.classList.add("error");
+    isValid = false;
+  } else if (Number(interestRateInput.value) <= 0) {
+    interestParagraphRequiredError.classList.remove("hidden");
+    interestParagraphRequiredError.textContent = "Should be above zero";
+    percentageErrorSpan.classList.remove("bg-secondary-slate-100");
+    percentageErrorSpan.classList.add("error");
+    isValid = false;
+  }
+
+  //   validate radio inputs
+  if (!repaymentInput.checked && !interestOnlyInput.checked) {
+    mortgageTypeRequiredError.classList.remove("hidden");
+  }
+
+  return isValid;
+}
