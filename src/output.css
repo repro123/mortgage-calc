@@ -620,6 +620,9 @@
     background-color: var(--color-error);
     color: var(--color-white);
   }
+  .overflow {
+    overflow-wrap: anywhere;
+  }
 }
 @property --tw-border-style {
   syntax: "*";
