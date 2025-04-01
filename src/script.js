@@ -31,12 +31,62 @@ const mortgageTypeRequiredError = document.querySelector("#mortgageTypeError");
 const clearAllBtn = document.querySelector("#clearAll");
 const calculateRepaymentsBtn = document.querySelector("#calculateRepayments");
 
+// select result spans
+const monthlyRepaymentsSpan = document.querySelector("#monthlyRepayments");
+const totalRepaymentSpan = document.querySelector("#totalRepayments");
+
 // select empty results and result content divs
 const emptyResultsDiv = document.querySelector("#emptyResults");
 const resultsShownDiv = document.querySelector("#resultsShown");
 
 // calculate mortgage
-function calculateMortgage() {}
+function calculateMortgage() {
+  if (!validateform()) return;
+
+  //   get values from inputs
+  const principalMortgageAmount = Number(mortageAmountInput.value);
+  const mortgageTermYears = Number(mortageTermYearsInput.value);
+  const interestRate = Number(interestRateInput.value);
+
+  //  calculate monthly interest rate
+  const monthlyInterestRate = interestRate / 100 / 12;
+
+  //   calculate number of monthly payments
+  const numberOfMonthlyPayments = mortgageTermYears * 12;
+
+  monthlyRepaymentsSpan.textContent = 0;
+  totalRepaymentSpan.textContent = 0;
+
+  //   show results div and hide empty results div
+  emptyResultsDiv.classList.add("hidden");
+  emptyResultsDiv.classList.remove("flex");
+  resultsShownDiv.classList.remove("hidden");
+  resultsShownDiv.classList.add("flex");
+
+  if (repaymentInput.checked) {
+    // monthly repayments = P * [ r(1 + r)^n ] / [ (1 + r)^n - 1 ]  - p = principal mortgage amount, r = monthly interest rate, n = number of monthly payments
+    // total repayment = monthly repayments * number of monthly payments
+    const exponentialCompound =
+      (1 + monthlyInterestRate) ** numberOfMonthlyPayments;
+    const monthlyRepayments =
+      (principalMortgageAmount * (monthlyInterestRate * exponentialCompound)) /
+      (exponentialCompound - 1);
+    const totalRepayment = monthlyRepayments * numberOfMonthlyPayments;
+    monthlyRepaymentsSpan.textContent = monthlyRepayments.toFixed(2);
+    totalRepaymentSpan.textContent = totalRepayment.toFixed(2);
+  }
+
+  if (interestOnlyInput.checked) {
+    // monthly payments = principal mortgage amount * monthly interest rate ---  (P * r)
+    // total repayment = Total = (P * r * n) + P
+    const monthlyRepayments = principalMortgageAmount * monthlyInterestRate;
+    const totalRepayment =
+      principalMortgageAmount * monthlyInterestRate * numberOfMonthlyPayments +
+      principalMortgageAmount;
+    monthlyRepaymentsSpan.textContent = monthlyRepayments.toFixed(2);
+    totalRepaymentSpan.textContent = totalRepayment.toFixed(2);
+  }
+}
 
 // function to validate form and its inputs
 function validateform() {
@@ -133,7 +183,7 @@ function handleValidInput(errorParagraph, errorSpan, message) {
 // add event listener to form and calculate mortage
 form.addEventListener("submit", function (ev) {
   ev.preventDefault();
-  validateform();
+  calculateMortgage();
 });
 
 // clear all form field
@@ -143,4 +193,8 @@ clearAllBtn.addEventListener("click", function () {
   handleValidInput(termParagraphRequiredError, yearsErrorSpan, "");
   handleValidInput(interestParagraphRequiredError, percentageErrorSpan, "");
   mortgageTypeRequiredError.classList.add("hidden");
+  emptyResultsDiv.classList.add("flex");
+  emptyResultsDiv.classList.remove("hidden");
+  resultsShownDiv.classList.remove("flex");
+  resultsShownDiv.classList.add("hidden");
 });
