@@ -109,7 +109,6 @@ function validateform() {
     isValid = false;
   } else {
     handleValidInput(amountParagraphRequiredError, poundsSignErrorSpan, "");
-    isValid = true;
   }
 
   //    validate mortgage term input
@@ -127,9 +126,15 @@ function validateform() {
       "Should be above zero"
     );
     isValid = false;
+  } else if (Number(mortageTermYearsInput.value) > 100) {
+    handleInvalidInput(
+      termParagraphRequiredError,
+      yearsErrorSpan,
+      "Can't be above 100 years"
+    );
+    isValid = false;
   } else {
     handleValidInput(termParagraphRequiredError, yearsErrorSpan, "");
-    isValid = true;
   }
 
   //   validate interest rate input
@@ -147,9 +152,15 @@ function validateform() {
       "Should be above zero"
     );
     isValid = false;
+  } else if (Number(interestRateInput.value) >= 51) {
+    handleInvalidInput(
+      interestParagraphRequiredError,
+      percentageErrorSpan,
+      "Can't be above 50%"
+    );
+    isValid = false;
   } else {
     handleValidInput(interestParagraphRequiredError, percentageErrorSpan, "");
-    isValid = true;
   }
 
   //   validate radio inputs
@@ -158,7 +169,6 @@ function validateform() {
     isValid = false;
   } else {
     mortgageTypeRequiredError.classList.add("hidden");
-    isValid = true;
   }
 
   return isValid;
