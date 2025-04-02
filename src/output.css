@@ -192,6 +192,9 @@
     white-space: nowrap;
     border-width: 0;
   }
+  .fixed {
+    position: fixed;
+  }
   .m-auto {
     margin: auto;
   }
